@@ -6,7 +6,8 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Shivsena Program Management Application">
 <title>:: Shivsena Party Management :: Home</title>
-
+<link rel="icon" href="assets/img/favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon"/>
 <!-- Favicon-->
 
 <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
