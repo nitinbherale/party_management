@@ -34,7 +34,7 @@
             <div class="col-12">
                 <div class="navbar-logo">
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="index.php"><img src="../assets/images/favicon.png" width="30" alt="InfiniO"><span class="m-l-10">SPM</span></a>
+                    <a class="navbar-brand" href="index.php"><img src="../assets/images/favicon.png" width="30" alt="InfiniO"><span class="m-l-10">Shivsena Party Management</span></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="search_bar hidden-xs">
