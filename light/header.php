@@ -14,7 +14,7 @@
 <!-- Custom Css -->
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/color_skins.css">
-
+<link rel="stylesheet" href="../assets/plugins/sweetalert/sweetalert.css"/>
 </head>
 <body class="theme-purple">
 <!-- Page Loader -->
@@ -59,7 +59,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                   <li>
+                                    <li>
                                         <a href="javascript:void(0);">
                                             <div class="media">
                                                 <img class="media-object" src="../assets/images/xs/avatar5.jpg" alt="">
@@ -70,7 +70,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                   <li>
+                                    <li>
                                         <a href="javascript:void(0);">
                                             <div class="media">
                                                 <img class="media-object" src="../assets/images/xs/avatar5.jpg" alt="">
@@ -92,7 +92,7 @@
                                             </div>
                                         </a>
                                     </li>
-                                   <li>
+                                    <li>
                                         <a href="javascript:void(0);">
                                             <div class="media">
                                                 <img class="media-object" src="../assets/images/xs/avatar5.jpg" alt="">
@@ -269,5 +269,8 @@
 <script src="assets/js/pages/widgets/infobox/infobox-1.js"></script>
 <script src="assets/js/pages/index.js"></script>
 
+<script src="../assets/plugins/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js --> 
+
+<script src="assets/js/pages/ui/dialogs.js"></script>
 </body>
 </html>
