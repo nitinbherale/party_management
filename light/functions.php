@@ -1,4 +1,7 @@
 <?php
+function redirect($pg_name){
+ header("location:".$pg_name);
+}
 function isValidUser()
 {
     global $dblink;
@@ -12,7 +15,7 @@ function isValidUser()
     }
     else 
     {   
-        echo "Query not cubrid_execute(conn_identifier, SQL)"; 
+       //echo "Query not cubrid_execute(conn_identifier, SQL)"; 
         return 0;
     }
 }

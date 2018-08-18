@@ -1,5 +1,9 @@
-<?php include("header.php") ?>
-
+<?php include("header.php");
+ if(!isValidUser())   
+        {
+            header("location:login.php");
+        }
+?>
 <!-- Main Content -->
 <section class="content contact">
     <div class="container">
@@ -80,3 +84,6 @@
 
     </div>
 </section>
+
+
+        

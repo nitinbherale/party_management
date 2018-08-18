@@ -1,5 +1,5 @@
 ﻿<?php include("header.php") ?>
-<link rel="stylesheet" href="../assets/plugins/sweetalert/sweetalert.css"/>
+
 
 <section class="content">
     <div class="container">
@@ -94,9 +94,6 @@
 </section>
 <!-- Jquery Core Js --> 
 
-<script src="../assets/plugins/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js --> 
-
-<script src="assets/js/pages/ui/dialogs.js"></script>
 </body>
 
 </html>
