@@ -1,5 +1,8 @@
 <?php include("header.php") ?>
 
+<!-- JQuery DataTable Css -->
+<link rel="stylesheet" href="../assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
+
 <!-- Main Content -->
 <section class="content ecommerce-page">
     <div class="container">
@@ -30,7 +33,7 @@
                 <div class="card product_item_list product-order-list">
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-hover m-b-0">
+                            <table id="mainTable" class="table table-bordered table-striped table-hover dataTable js-exportable m-b-0">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Name</th>
@@ -140,20 +143,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="body">                            
-                        <ul class="pagination pagination-primary m-b-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i class="zmdi zmdi-arrow-left"></i></a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);">4</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0);"><i class="zmdi zmdi-arrow-right"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Jquery Core Js --> 
+
+<!-- Jquery DataTable Plugin Js --> 
+<script src="assets/bundles/datatablescripts.bundle.js"></script>
+<script src="../assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
+<script src="../assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js"></script>
+<script src="../assets/plugins/jquery-datatable/buttons/buttons.html5.min.js"></script>
+<script src="../assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
+
+<script src="assets/js/pages/tables/jquery-datatable.js"></script>
+
+<script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script> <!-- Editable Table Plugin Js --> 
+<script src="assets/js/pages/tables/editable-table.js"></script>
