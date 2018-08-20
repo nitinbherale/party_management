@@ -1,11 +1,36 @@
 <?php include("header.php") ?>
 <?php 
-if (isset($_POST["add_new_mem"])){
-    $fname = $_POST['fname'];
-    $designation = $_POST['designation'];
-   echo "<script>window.alert('button clicked')</script>";
+if (isset($_POST["add_new_mem"]))
+    {
+        $fname = $_POST['fname'];
+        $designation = $_POST['designation'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $whatsapp_no = $_POST['whatsapp_no'];
+        $district = $_POST['district'];
+        $tahsil = $_POST['tahsil'];
+        $street = $_POST['street'];
+        $city = $_POST['city'];
+        $p_code = $_POST['p_code'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $f_id = $_POST['f_id'];
+        $t_id = $_POST['t_id'];
+        $p_pic = $_FILES["p_pic"];
+        $tmp_name = time()."_".$p_pic['name']; 
+        $imgpath = "assets/img/";
+        $description = $_POST['description'];
+        $group = $_POST['group'];
+       if(strlen($p_pic["name"])>0)//storing image in file
+        {
+            if(!move_uploaded_file($p_pic["tmp_name"],$imgpath.$tmp_name))//storing image in file
+            {
+                echo '<script> swal("File Upload File"); </script>'; 
+            }
+        }
 
-}
+       echo "<script>window.alert('button clicked')</script>";
+    }
 ?>
 <section class="content">
     <div class="container">
@@ -51,23 +76,23 @@ if (isset($_POST["add_new_mem"])){
                     </div>
                     <div class="body">
                         <form method="post" enctype="multipart/form-data" >
-                            <label for="full_name">Enter Full Name</label>
+                            <label for="full_name">Enter Full Name *</label>
                             <div class="form-group">                                
                                 <input type="text" class="form-control" required placeholder="Enter your name" name="fname">
                             </div>
-                            <label for="designation">Designation</label>
+                            <label for="designation">Designation *</label>
                             <div class="form-group">                                
                                 <input type="text"  class="form-control" required placeholder="Enter your name" name="designation">
                             </div>
                             <label for="email_address">Email Id</label>
                             <div class="form-group">                                
-                                <input type="email" class="form-control" required placeholder="Enter your email address" name="email">
+                                <input type="email" class="form-control" placeholder="Enter your email address" name="email">
                             </div>
-                             <label for="mobile_number">Mobile No.</label>
+                             <label for="mobile_number">Mobile No. *</label>
                             <div class="form-group">                                
                                 <input type="number" class="form-control" required placeholder="Enter your Mobile No." name="mobile">
                             </div>
-                             <label for="whatsapp_no">Whatsapp No.</label>
+                             <label for="whatsapp_no">Whatsapp No. *</label>
                             <div class="form-group">                                
                                 <input type="text" class="form-control" required placeholder="Enter your Whatsapp No." name="whatsapp_no">
                             </div>
@@ -89,7 +114,7 @@ if (isset($_POST["add_new_mem"])){
                             </div>
                             <label for="postal_code">Postal Code*</label>
                             <div class="form-group">                                
-                                <input type="text" id="email_address" class="form-control" required placeholder="Enter your Postal Code" name="p_code">
+                                <input type="number" id="email_address" class="form-control" required placeholder="Enter your Postal Code" name="p_code">
                             </div>
                             <label for="gender">Gender*</label>
                             <div class="form-group">
@@ -107,22 +132,22 @@ if (isset($_POST["add_new_mem"])){
                                     <span class="input-group-addon">
                                         <i class="zmdi zmdi-calendar"></i>
                                     </span>
-                                    <input type="date" class="form-control datetimepicker" required placeholder="Please choose date &amp; time..." data-dtp="dtp_322XI">
+                                    <input type="date" class="form-control datetimepicker" name="dob" required placeholder="Please choose date &amp; time..." data-dtp="dtp_322XI">
                                 </div>
-                             <label for="fb_link">Facebook Id*</label>
+                             <label for="fb_link">Facebook Id </label>
                             <div class="form-group">                                
-                                <input type="text" id="email_address" class="form-control"  placeholder="Facebook Id" name="f_id">
+                                <input type="text" class="form-control"  placeholder="Facebook Id" name="f_id">
                             </div>
-                             <label for="fb_link">Twitter Id*</label>
+                             <label for="fb_link">Twitter Id </label>
                             <div class="form-group">                                
-                                <input type="text" id="email_address" class="form-control" placeholder="Twitter Id" name="t_id">
+                                <input type="text"  class="form-control" placeholder="Twitter Id" name="t_id">
                             </div>
-                             <label for="profile_pic">Profile Pic*</label>
+                             <label for="profile_pic">Profile Pic </label>
                             <div class="form-group">                                
-                                <input type="File" id="email_address" class="form-control"  placeholder="Profile Picture" name="p_pic">
+                                <input type="File"  class="form-control"  placeholder="Profile Picture" name="p_pic">
                             </div>
                             <div class="form-group form-float">
-                                <textarea name="description" cols="30" rows="5" placeholder="Short Info" class="form-control no-resize" required aria-required="true"></textarea>
+                                <textarea name="description" cols="30" rows="5" placeholder="Short Info" class="form-control no-resize" ></textarea>
                             </div>
 
                            <div class="form-check form-check-inline">
