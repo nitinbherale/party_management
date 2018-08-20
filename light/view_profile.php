@@ -1,12 +1,13 @@
 <?php include("header.php");
  if(!isValidUser())  
     {
-    redirect("login.php"); 
+        redirect("login.php"); 
     }
     else
     {
         $mem_id = $_POST['mbr_no'];
-    } ?>
+    }   
+?>
 <section class="content profile-page">    
     <div class="container">
         <div class="row clearfix">
