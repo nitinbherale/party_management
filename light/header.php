@@ -198,7 +198,7 @@
                             <li><a href="#"><i class="icon-user m-r-10"></i> <span>My Profile</span> <span class="badge badge-success float-right">80%</span></a></li>
                             <li><a href="javascript:void(0);"><i class="icon-notebook m-r-10"></i><span>Taskboard</span> <span class="badge badge-info float-right">New</span></a></li>                            
                             <li><a href="#"><i class="icon-lock m-r-10"></i><span>Locked</span></a></li>
-                            <li><a href="#"><i class="icon-power m-r-10"></i><span>Sign Out</span></a></li>
+                            <li><a href="logout.php"><i class="icon-power m-r-10"></i><span>Sign Out</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -283,6 +283,20 @@
         showConfirmButton: false
         });
     }
+    function success_msg(title,text,url){
+        swal({
+            title: title,
+            text: text,
+            type: "success",
+            confirmButtonColor: "#8BC34A", 
+            confirmButtonText: "OK" 
+        },function(isConfirm){
+        if (isConfirm) {
+    window.location.href = url;
+        }
+        });
+    }
+
 </script>
 </body>
 </html>
