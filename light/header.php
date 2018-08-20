@@ -273,5 +273,16 @@
 <script src="../assets/plugins/sweetalert/sweetalert.min.js"></script> <!-- SweetAlert Plugin Js --> 
 
 <script src="assets/js/pages/ui/dialogs.js"></script>
+<script type="text/javascript">
+   function warning_msg(title,text) {
+    swal({
+        title: title,
+        text: text,
+        timer: 2000,
+        type: "warning",
+        showConfirmButton: false
+        });
+    }
+</script>
 </body>
 </html>
