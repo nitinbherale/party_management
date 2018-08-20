@@ -5,7 +5,7 @@
     }
     else
     {
-          
+        $mem_id = $_POST['mbr_no'];
     } ?>
 <section class="content profile-page">    
     <div class="container">
