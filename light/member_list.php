@@ -1,4 +1,9 @@
-<?php include("header.php") ?>
+<?php include("header.php");
+if(!isValidUser())  
+    {
+    redirect("login.php"); 
+    }
+?>
 
 <!-- Main Content -->
 <section class="content ecommerce-page">
@@ -17,8 +22,7 @@
                                 </ul>
                             </div>            
                             <div class="col-lg-6 col-md-4 col-sm-12 text-right">
-                                
-                                <button class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10">Create New</button>
+                                <a href="add_new_member.php" class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10">Create New</a>
                             </div>
                         </div>
                     </div>

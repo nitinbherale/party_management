@@ -1,4 +1,12 @@
-<?php include("header.php") ?>
+<?php include("header.php");
+ if(!isValidUser())  
+    {
+    redirect("login.php"); 
+    }
+    else
+    {
+          
+    } ?>
 <section class="content profile-page">    
     <div class="container">
         <div class="row clearfix">

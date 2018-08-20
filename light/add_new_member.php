@@ -1,66 +1,73 @@
-<?php include("header.php") ?>
+<?php include("header.php"); ?>
 <?php 
-if (isset($_POST["add_new_mem"]))
+    if(!isValidUser())  
     {
-        $error = 0;
-        $fname = mysqli_real_escape_string($dblink,$_POST['fname']);
-        $designation = mysqli_real_escape_string($dblink,$_POST['designation']);
-        $email = mysqli_real_escape_string($dblink,$_POST['email']);
-        $mobile = $_POST['mobile'];
-        $whatsapp_no = $_POST['whatsapp_no'];
-        $district = mysqli_real_escape_string($dblink,$_POST['district']);
-        $tahsil = mysqli_real_escape_string($dblink,$_POST['tahsil']);
-        $street = mysqli_real_escape_string($dblink,$_POST['street']);
-        $city = mysqli_real_escape_string($dblink,$_POST['city']);
-        $p_code = $_POST['p_code'];
-        $gender = $_POST['gender'];
-        $dob = $_POST['dob'];
-        $f_id = mysqli_real_escape_string($dblink,$_POST['f_id']);
-        $t_id = mysqli_real_escape_string($dblink,$_POST['t_id']);
-        $p_pic = $_FILES["p_pic"];
-        $tmp_name = time()."_".$p_pic['name']; 
-        $imgpath = "assets/img/";
-        $description = mysqli_real_escape_string($dblink,stripcslashes($_POST['description']));
-        $group = $_POST['group'];
-        $grp_array = $group[0];
-        for ($i=1; $i < count($group); $i++) { 
-           $grp_array .= ",".$group[$i];
-        }
-
-        $add_qry = "";
-        if(strlen($p_pic["name"])>0)
+    redirect("login.php"); 
+    }
+    else
+    {
+        if (isset($_POST["add_new_mem"]))
         {
-            if ($p_pic['size']<1000000) 
+            $error = 0;
+            $fname = mysqli_real_escape_string($dblink,$_POST['fname']);
+            $designation = mysqli_real_escape_string($dblink,$_POST['designation']);
+            $email = mysqli_real_escape_string($dblink,$_POST['email']);
+            $mobile = $_POST['mobile'];
+            $whatsapp_no = $_POST['whatsapp_no'];
+            $district = mysqli_real_escape_string($dblink,$_POST['district']);
+            $tahsil = mysqli_real_escape_string($dblink,$_POST['tahsil']);
+            $street = mysqli_real_escape_string($dblink,$_POST['street']);
+            $city = mysqli_real_escape_string($dblink,$_POST['city']);
+            $p_code = $_POST['p_code'];
+            $gender = $_POST['gender'];
+            $dob = $_POST['dob'];
+            $f_id = mysqli_real_escape_string($dblink,$_POST['f_id']);
+            $t_id = mysqli_real_escape_string($dblink,$_POST['t_id']);
+            $p_pic = $_FILES["p_pic"];
+            $tmp_name = time()."_".$p_pic['name']; 
+            $imgpath = "assets/img/";
+            $description = mysqli_real_escape_string($dblink,stripcslashes($_POST['description']));
+            $group = $_POST['group'];
+            $grp_array = $group[0];
+            for ($i=1; $i < count($group); $i++) { 
+               $grp_array .= ",".$group[$i];
+            }
+
+            $add_qry = "";
+            if(strlen($p_pic["name"])>0)
             {
-                if(!move_uploaded_file($p_pic["tmp_name"],$imgpath.$tmp_name))//storing image in file
+                if ($p_pic['size']<1000000) 
                 {
-                    echo '<script>warning_msg("Error","File upload Failed");</script>'; 
-                    $error = 1;
+                    if(!move_uploaded_file($p_pic["tmp_name"],$imgpath.$tmp_name))//storing image in file
+                    {
+                        echo '<script>warning_msg("Error","File upload Failed");</script>'; 
+                        $error = 1;
+                    }
+                    else
+                    {
+                        $add_qry = ",mem_img = '$tmp_name'";
+                    }
                 }
                 else
                 {
-                    $add_qry = ",";
+                    echo '<script>warning_msg("Warning","File size is more than 1 mb");</script>'; 
+                            $error = 1;
                 }
             }
-            else
-            {
-                echo '<script>warning_msg("Warning","File size is more than 1 mb");</script>'; 
-                        $error = 1;
-            }
-        }
 
-        if($error == 0){
-            $ins_qry = "insert into tbl_member set mem_f_nm = '$fname', mem_desn = '$designation', mem_email = '$email', mem_m_no = $mobile, mem_wp_no = $whatsapp_no, mem_dis = '$district', mem_tah = '$tahsil', mem_str = '$street', mem_cty = '$city', mem_ps_cd = $p_code, mem_gen = $gender, mem_dob = '$dob', mem_fb_lk = '', mem_srt_info = '$description'";
-            $result = mysqli_query($dblink,$ins_qry);
-            if($result){
-                  echo '<script>warning_msg("Warning","Data added success fully");</script>'; 
+            if($error == 0){
+                $ins_qry = "insert into tbl_member set mem_f_nm = '$fname', mem_desn = '$designation', mem_email = '$email', mem_m_no = $mobile, mem_wp_no = $whatsapp_no, mem_dis = '$district', mem_tah = '$tahsil', mem_str = '$street', mem_cty = '$city', mem_ps_cd = $p_code, mem_gen = $gender, mem_dob = '$dob', mem_fb_lk = '$f_id', mem_tw_lk = '$t_id', mem_srt_info = '$description', mem_grp = '$grp_array' ".$add_qry;
+                $result = mysqli_query($dblink,$ins_qry);
+                if($result){
+                      echo '<script>success_msg("Success","Member added Successfully","add_new_member.php");</script>'; 
+                }
+                else{
+                    $msg = mysqli_error($dblink);
+                      echo '<script>swal("'.$msg.'");</script>'; 
+                }
             }
-            else{
-                $msg = mysqli_error($dblink);
-                  echo '<script>swal("'.$msg.'");</script>'; 
-            }
+          // echo "<script>window.alert('button clicked')</script>";
         }
-      // echo "<script>window.alert('button clicked')</script>";
     }
 ?>
 <section class="content">
