@@ -27,22 +27,28 @@
         </div>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
-                <div class="card active-bg text-white" style="background: #191f28;">
+                <div class="card active-bg text-white card_mt_20" style="background: #191f28;">
                     <div class="body profile-header">
                         <img src="../assets/images/nitin_sb.jpg" class="user_pic rounded img-raised" alt="User">
                         <div class="detail">
                             <div class="u_name">
                                 <h4 style="color: #fff;"><strong>Nitin</strong> Bherale</h4>
-                                <span style="color: #fff;">MLA, Murbad Matdarsangh</span> <hr />
+                                <span style="color: #fff;">MLA, Murbad Matdarsangh</span> <hr style="background: #c78035;">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                             </div>
-                            <div id="m_area_chart"></div>
+                            <!--<div id="m_area_chart"></div>-->
                         </div>
                     </div>
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" id="overview">
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-6 col-6">
+                        <div class="row clearfix tab_custom_clr">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">
                                         <h5 class="m-b-0">24th July 1993</h5>
@@ -50,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">                            
                                         <h5 class="m-b-0">Kalyan</h5>
@@ -58,7 +64,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">
                                         <h5 class="m-b-0">421301</h5>
@@ -66,7 +72,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">
                                         <h5 class="m-b-0">Thane</h5>
@@ -104,22 +110,7 @@
                                 
                             </div>
                             <div class="col-lg-8 col-md-12">
-                                <div class="card">
-                                    <div class="header">
-                                        <h2><strong>Send</strong> Message</h2>
-                                    </div>
-                                    <div class="body m-b-10">
-                                        <div class="form-group">
-                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                        <div class="post-toolbar-b">
-                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
-                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button>
-                                            <button class="btn btn-primary btn-round">Send </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
+                                  <div class="card">
                                     <div class="body">                               
                                         <h5 class="m-t-20 m-b-0 post_title">Short Info</h5>                                
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -132,7 +123,22 @@
                                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                                         cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                                                              
+                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    </div>
+                                </div>
+                                 <div class="card">
+                                    <div class="header">
+                                        <h2><strong>Send</strong> Message</h2>
+                                    </div>
+                                    <div class="body m-b-10">
+                                        <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                        <div class="post-toolbar-b">
+                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
+                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button>
+                                            <button class="btn btn-primary btn-round">Send </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -178,3 +184,9 @@
         </div>
     </div>
 </div>
+
+<style type="text/css">
+    .card_mt_20{margin-top: 50px;margin-bottom: 60px;}
+    .card_mt_20 p {color: #ffffff;}
+    .tab_custom_clr h5{color: #f37437;}
+</style>
