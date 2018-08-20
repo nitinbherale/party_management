@@ -240,11 +240,11 @@
                             </ul>
                         </li>
 
-                        <li class="header">Project List</li>
-                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="icon-doc"></i><span>Project List</span></a>
+                        <li class="header">Group List</li>
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="icon-doc"></i><span> Groups</span></a>
                             <ul class="ml-menu">
-                                <li><a href="add_new_event.php">Add New Projects</a></li>
-                                <li><a href="project_list.php">Project List</a></li>
+                                <li><a a href="#smallModal" data-toggle="modal" data-target="#smallModal">Add New Group</a></li>
+                                <li><a href="group_list.php">Group List</a></li>
                             </ul>
                         </li>
                         <!--<li> <a href="javascript:void(0);" class="menu-toggle"><i class="icon-map"></i><span>Maps</span></a>
@@ -298,5 +298,28 @@
     }
 
 </script>
+
+
+<!--Modal-->
+
+  <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">Add New Group</h4>
+            </div>
+            <div class="modal-body"> 
+               <div class="form-group">                                    
+                    <input type="text" class="form-control" placeholder="Add New Group">
+                </div>
+             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-round waves-effect">Add </button>
+                <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
 </body>
 </html>

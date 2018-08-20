@@ -1,4 +1,10 @@
 <?php include("header.php"); ?>
+<link rel="stylesheet" href="../assets/plugins/multi-select/css/multi-select.css">
+<link rel="stylesheet" href="../assets/plugins/bootstrap-select/css/bootstrap-select.css" />
+
+
+
+
 <?php 
     if(!isValidUser())  
     {
@@ -190,14 +196,31 @@
                                 <textarea name="description" cols="30" rows="5" placeholder="Short Info" class="form-control no-resize" ><?php echo $description; ?></textarea>
                             </div>
 
-                           <div class="form-check form-check-inline">
+                           <!--<div class="form-check form-check-inline">
                               <input class="form-check-input" name="group[]" type="checkbox" id="inlineCheckbox1" value="1">
                               <label class="form-check-label"  for="inlineCheckbox1">Yuvasainik</label>
                             </div>
                             <div class="form-check form-check-inline">
                               <input class="form-check-input" name="group[]" type="checkbox" id="inlineCheckbox2" value="2">
                               <label class="form-check-label"  for="inlineCheckbox2">Shivsainik</label>
-                            </div><br />
+                            </div>-->
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control show-tick" multiple>
+                                            <option>Shivsena</option>
+                                            <option>Yuvasena</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#smallModal" class="btn btn-primary" data-toggle="modal" data-target="#smallModal">Add New Group
+                                     </a>
+                                </div>
+                            </div>
+                            <br />
 
                             <button type="submit" name="add_new_mem" class="btn btn-raised btn-primary btn-round waves-effect">CREATE MEMBER</button>
                         </form>
@@ -208,3 +231,30 @@
         <!-- #END# Vertical Layout -->        
     </div>
 </section>
+
+
+<!--Modal-->
+
+  <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title" id="smallModalLabel">Add New Group</h4>
+            </div>
+            <div class="modal-body"> 
+               <div class="form-group">                                    
+                    <input type="text" class="form-control" placeholder="Add New Group">
+                </div>
+             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-round waves-effect">Add </button>
+                <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal-->
+
+<script src="../assets/plugins/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js --> 
+
+
