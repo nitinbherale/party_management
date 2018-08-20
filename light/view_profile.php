@@ -5,7 +5,8 @@
     }
     else
     {
-        $mem_id = $_POST['mbr_no'];
+        $mem_id = $_GET['mbr_no'];
+         list($member_list) = exc_qry("select * from tbl_member where mem_id = ".$mem_id);
     }   
 ?>
 <section class="content profile-page">    
@@ -34,21 +35,24 @@
                 </div>
             </div>
         </div>
+        <?php if(strlen($member_list[0]['mem_img'])>0){
+        $img = $member_list[0]['mem_img'];
+        }
+        else{
+            $img = "no_image.png";
+        };  ?>
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
                 <div class="card active-bg text-white card_mt_20" style="background: #191f28;">
                     <div class="body profile-header">
-                        <img src="../assets/images/nitin_sb.jpg" class="user_pic rounded img-raised" alt="User">
+                        <img src="assets/img/<?php echo $img; ?>" class="user_pic rounded img-raised" alt="User" width="200px">
                         <div class="detail">
                             <div class="u_name">
-                                <h4 style="color: #fff;"><strong>Nitin</strong> Bherale</h4>
-                                <span style="color: #fff;">MLA, Murbad Matdarsangh</span> <hr style="background: #c78035;">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <h4 style="color: #fff;"><strong><?php echo $member_list[0]['mem_f_nm']; ?></strong></h4>
+                                <span style="color: #fff;"><?php echo $member_list[0]['mem_desn']; ?></span> <hr style="background: #c78035;">
+                                <p>   
+                                    &nbsp;
+                                </p>
                             </div>
                             <!--<div id="m_area_chart"></div>-->
                         </div>
@@ -60,7 +64,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">
-                                        <h5 class="m-b-0">24th July 1993</h5>
+                                        <h5 class="m-b-0"><?php echo date('d', strtotime($member_list[0]['mem_dob']))."th ".date('F Y', strtotime($member_list[0]['mem_dob'])); ?> </h5>
                                          <small>DOB</small>
                                     </div>
                                 </div>
@@ -68,7 +72,7 @@
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">                            
-                                        <h5 class="m-b-0">Kalyan</h5>
+                                        <h5 class="m-b-0"><?php echo $member_list[0]['mem_cty']; ?></h5>
                                         <small>City</small>
                                     </div>
                                 </div>
@@ -77,14 +81,14 @@
                                 <div class="card text-center">
                                     <div class="body">
                                         <h5 class="m-b-0">421301</h5>
-                                        <small>Pincode</small>
+                                        <small><?php echo $member_list[0]['mem_ps_cd']; ?></small>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <div class="card text-center">
                                     <div class="body">
-                                        <h5 class="m-b-0">Thane</h5>
+                                        <h5 class="m-b-0"><?php echo $member_list[0]['mem_dis']; ?></h5>
                                         <small>Dist</small>
                                     </div>
                                 </div>
@@ -104,16 +108,16 @@
                                         </div>
                                         <hr>
                                         <small class="text-muted">Email address: </small>
-                                        <p>nitin.bherale@nmpl.biz</p>
+                                        <p><?php echo $member_list[0]['mem_email']; ?></p>
                                         <hr>
                                         <small class="text-muted">Mobile No.: </small>
-                                        <p>+91 9922854416</p>
+                                        <p>+91 <?php echo $member_list[0]['mem_m_no']; ?></p>
                                         <hr>
                                         <small class="text-muted">Whatsapp No.: </small>
-                                        <p>+91 9922854416</p>
+                                        <p>+91 <?php echo $member_list[0]['mem_wp_no']; ?></p>
                                         <hr>
                                         <small class="text-muted">Birth Date: </small>
-                                        <p class="m-b-0">July 24th, 1993</p>
+                                        <p class="m-b-0"><?php echo date('F d,Y', strtotime($member_list[0]['mem_dob'])); ?></p>
                                     </div>
                                 </div>
                                 
@@ -122,17 +126,7 @@
                                   <div class="card">
                                     <div class="body">                               
                                         <h5 class="m-t-20 m-b-0 post_title">Short Info</h5>                                
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <p><?php echo $member_list[0]['mem_srt_info']; ?></p>
                                     </div>
                                 </div>
                                  <div class="card">
@@ -144,8 +138,8 @@
                                             <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
                                         </div>
                                         <div class="post-toolbar-b">
-                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
-                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button>
+                                           <!--  <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
+                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button> -->
                                             <button class="btn btn-primary btn-round">Send </button>
                                         </div>
                                     </div>

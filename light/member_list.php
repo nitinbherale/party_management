@@ -1,4 +1,13 @@
-<?php include("header.php") ?>
+<?php include("header.php");
+if(!isValidUser())  
+    {
+    redirect("login.php"); 
+    }
+    else
+    {
+        list($member_list) = exc_qry("select * from tbl_member order by mem_id desc");
+    }
+ ?>
 
 <!-- JQuery DataTable Css -->
 <link rel="stylesheet" href="../assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
@@ -36,94 +45,44 @@
                             <table id="mainTable" class="table table-bordered table-striped table-hover dataTable js-exportable m-b-0">
                                 <thead class="thead-dark">
                                     <tr>
+                                        <th>Id</th>
                                         <th>Name</th>
-                                        <th data-breakpoints="sm xs">Email ID</th>
+                                        <th>Designation</th>
                                         <th>Image</th>
                                         <th>District</th>
-                                        <th data-breakpoints="xs">Tal</th>
+                                        <th data-breakpoints="xs">Tahsil</th>
                                         <th>Mobile No.</th>
-                                        <th>Groups</th>
-                                        <th data-breakpoints="xs md">Status</th>
+                                       <!--  <th>Groups</th> -->
+                                       <!--  <th data-breakpoints="xs md">Status</th> -->
                                         <th data-breakpoints="sm xs md">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     <tr>
-                                        <td>Nitin Bherale</td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
-                                        <td>Thane</td>
-                                        <td>Kalyan</td>
-                                        <td>9922854416</td>
-                                        <td>Yuvasainik</td>
-                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
-                                        <td>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>  
-                                     <tr>
-                                        <td>Nitin Bherale</td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
-                                        <td>Thane</td>
-                                        <td>Kalyan</td>
-                                        <td>9922854416</td>
-                                        <td>Yuvasainik</td>
-                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
-                                        <td>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>  
-                                     <tr>
-                                        <td>Nitin Bherale</td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
-                                        <td>Thane</td>
-                                        <td>Kalyan</td>
-                                        <td>9922854416</td>
-                                        <td>Yuvasainik</td>
-                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
-                                        <td>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>  
-                                     <tr>
-                                        <td>Nitin Bherale</td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
-                                        <td>Thane</td>
-                                        <td>Kalyan</td>
-                                        <td>9922854416</td>
-                                        <td>Yuvasainik</td>
-                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
-                                        <td>
-                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>  
-                                     <tr>
-                                        <td>Nitin Bherale</td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
-                                        <td>Thane</td>
-                                        <td>Kalyan</td>
-                                        <td>9922854416</td>
-                                        <td>Yuvasainik</td>
-                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
-                                        <td>
-                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>  
+                                     <?php for ($i=0; $i < count($member_list); $i++) { ?>                                   
                                     <tr>
+                                        <td><?php echo $i+1; ?></td>
+                                        <td><?php echo $member_list[$i]['mem_f_nm']; ?></td>
+                                        <td><?php echo $member_list[$i]['mem_desn']; ?></td>
+                                        <td><?php if(strlen($member_list[$i]['mem_img'])>0){
+                                                    $img = $member_list[$i]['mem_img'];
+                                                    }
+                                                    else{
+                                                        $img = "no_image.png";
+                                                    };  ?>
+                                            <img src="assets/img/<?php echo $img; ?>" width="60" alt="Product img"></td>
+                                        <td><?php echo $member_list[$i]['mem_dis']; ?></td>
+                                        <td><?php echo $member_list[$i]['mem_tah']; ?></td>
+                                        <td><?php echo $member_list[$i]['mem_m_no']; ?></td>
+                                       <!--  <td>Yuvasainik</td> -->
+                                       <!--  <td><span class="badge badge-success bg-success text-white">Active</span></td> -->
+                                        <td>
+                                            <a href="view_profile.php?mbr_no=<?php echo $member_list[$i]['mem_id']; ?>" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
+                                        </td>
+                                    </tr>   
+                                    <?php  } ?> 
+                        <!--              <tr>
                                         <td>Nitin Bherale</td>
                                         <td>nitin.bherale@nmpl.biz</td>
                                         <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
@@ -133,11 +92,11 @@
                                         <td>Yuvasainik</td>
                                         <td><span class="badge badge-success bg-success text-white">Active</span></td>
                                         <td>
-                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
                                         </td>
-                                    </tr>    
+                                    </tr> -->     
                                 </tbody>
                             </table>
                         </div>
@@ -159,5 +118,5 @@
 
 <script src="assets/js/pages/tables/jquery-datatable.js"></script>
 
-<script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script> <!-- Editable Table Plugin Js --> 
+<script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script> Editable Table Plugin Js 
 <script src="assets/js/pages/tables/editable-table.js"></script>
