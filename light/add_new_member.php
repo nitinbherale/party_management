@@ -190,7 +190,7 @@
                             </div>
                              <label for="profile_pic">Profile Pic </label>
                             <div class="form-group">                                
-                                <input type="File"  class="form-control"  placeholder="Profile Picture" accept="image/*" name="p_pic">
+                                <input type="File" class="form-control"  placeholder="Profile Picture" accept="image/*" name="p_pic">
                             </div>
                             <div class="form-group form-float">
                                 <textarea name="description" cols="30" rows="5" placeholder="Short Info" class="form-control no-resize" ><?php echo $description; ?></textarea>
@@ -209,8 +209,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <select class="form-control show-tick" multiple>
-                                            <option>Shivsena</option>
-                                            <option>Yuvasena</option>
+                                            <option value="0">Shivsena</option>
+                                            <option value="1">Yuvasena</option>
                                             <option>Other</option>
                                         </select>
                                     </div>

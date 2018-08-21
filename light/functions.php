@@ -102,4 +102,41 @@ function make_bitly_url($url, $login, $appkey, $format='xml', $history=1, $versi
     }
 }
 
+function send_sms($msg,$mobile_no){
+    $authKey = "xk9139XKsu83ae";
+    $senderId = "AUTPRO";
+    $clientId = "7c2f838f-3f5d-4208-ab38-859ca1c858d0";
+    $message = urlencode($msg);
+    $route = "route=4";
+    $contact = $mobile_no;
+    $postData = array(
+    'authkey' => $authKey,
+    'mobiles' => $contact,
+    'message' => $message,
+    'sender' => $senderId,
+    'route' => $route
+    );
+    $url="https://quick.admarksolution.com/vendorsms/pushsms.aspx?clientid=$clientId&apikey=$authKey&msisdn=91$contact&sid=$senderId&msg=$message&fl=0&gwid=2&dc=8";
+    $ch = curl_init();
+    curl_setopt_array($ch, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => $postData
+    ));
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $output = curl_exec($ch);
+    if(curl_errno($ch))
+    {
+        $msg = 'error:' . curl_error($ch);
+    }
+    else
+    {
+        $msg="success";
+    }
+    curl_close($ch);
+  return $msg;
+}
+
 ?>

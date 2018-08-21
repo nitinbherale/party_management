@@ -45,7 +45,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="card active-bg text-white card_mt_20" style="background: #191f28;">
                     <div class="body profile-header">
-                        <img src="assets/img/<?php echo $img; ?>" class="user_pic rounded img-raised" alt="User" width="200px">
+                        <img src="assets/img/<?php echo $img; ?>" class="user_pic rounded img-raised" alt="User" width="150px">
                         <div class="detail">
                             <div class="u_name">
                                 <h4 style="color: #fff;"><strong><?php echo $member_list[0]['mem_f_nm']; ?></strong></h4>
