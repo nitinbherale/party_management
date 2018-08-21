@@ -6,24 +6,7 @@ if(!isValidUser())
     else
     {
         list($member_list) = exc_qry("select * from tbl_member order by mem_id desc");
-
-          if (isset($_POST['delete_member'])) {
-               $id = $_POST['id'];
-               $qry_del = "update tbl_member set status = 1 where mem_id = $id";
-               $del_qry_fire= mysqli_query($dblink,$qry_del);
-
-               if ( $del_qry_fire) {
-                  echo "Data Deleted Successfully";
-               }
-               else{
-                echo "Something went wrong";
-               }
-
-
-          }
     }
-
-
  ?>
 
 <!-- JQuery DataTable Css -->
@@ -95,15 +78,25 @@ if(!isValidUser())
                                         <td>
                                             <a href="view_profile.php?mbr_no=<?php echo $member_list[$i]['mem_id']; ?>" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
                                             <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
-
-                                            <form method="POST">
-                                                <input type="hidden" name="id" value="<?php echo $member_list[$i]['mem_id'];?>">
-                                            <!--<a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>-->
-                                             <button type="submit" name="delete_member" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></button>
-                                            </form>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
                                         </td>
                                     </tr>   
-                                    <?php  } ?>    
+                                    <?php  } ?> 
+                        <!--              <tr>
+                                        <td>Nitin Bherale</td>
+                                        <td>nitin.bherale@nmpl.biz</td>
+                                        <td><img src="../assets/images/nitin_sb.jpg" width="40" alt="Product img"></td>
+                                        <td>Thane</td>
+                                        <td>Kalyan</td>
+                                        <td>9922854416</td>
+                                        <td>Yuvasainik</td>
+                                        <td><span class="badge badge-success bg-success text-white">Active</span></td>
+                                        <td>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>
+                                            <a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>
+                                        </td>
+                                    </tr> -->     
                                 </tbody>
                             </table>
                         </div>
@@ -125,5 +118,5 @@ if(!isValidUser())
 
 <script src="assets/js/pages/tables/jquery-datatable.js"></script>
 
-<script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script>
+<script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script> Editable Table Plugin Js 
 <script src="assets/js/pages/tables/editable-table.js"></script>
