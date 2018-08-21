@@ -5,21 +5,20 @@ if(!isValidUser())
     }
     else
     {
-        list($member_list) = exc_qry("select * from tbl_member order by mem_id desc");
+        list($member_list) = exc_qry("select * from tbl_member where mem_active = 0 order by mem_id desc");
 
-          if (isset($_POST['delete_member'])) {
+          if (isset($_POST['delete_member'])) 
+          {
                $id = $_POST['id'];
-               $qry_del = "update tbl_member set status = 1 where mem_id = $id";
+               $qry_del = "update tbl_member set mem_active = 1 where mem_id = $id";
                $del_qry_fire= mysqli_query($dblink,$qry_del);
 
-               if ( $del_qry_fire) {
-                  echo "Data Deleted Successfully";
+               if ($del_qry_fire) {
+                    echo '<script>success_msg("Success","Member Deleted SuccessFully","member_list2.php");</script>';
                }
                else{
-                echo "Something went wrong";
+                    echo '<script>swal("error")</script>';
                }
-
-
           }
     }
 
@@ -124,6 +123,6 @@ if(!isValidUser())
 <script src="../assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
 
 <script src="assets/js/pages/tables/jquery-datatable.js"></script>
-
+<!-- 
 <script src="../assets/plugins/editable-table/mindmup-editabletable.js"></script>
-<script src="assets/js/pages/tables/editable-table.js"></script>
+<script src="assets/js/pages/tables/editable-table.js"></script> -->

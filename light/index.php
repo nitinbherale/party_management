@@ -3,6 +3,9 @@
         {
             header("location:login.php");
         }
+        else{
+             //echo '<script>swal("'.count($master).'");</script>'; 
+        }
 ?>
 <!-- Main Content -->
 <section class="content contact">

@@ -6,7 +6,26 @@
     else
     {
         $mem_id = $_GET['mbr_no'];
-         list($member_list) = exc_qry("select * from tbl_member where mem_id = ".$mem_id);
+        list($member_list) = exc_qry("select * from tbl_member where mem_id = ".$mem_id);
+        if(isset($_POST['send_sms'])){
+            $message = $_POST['message']."\n".SEND_BY;
+            $send = send_sms($message,$member_list[0]['mem_m_no']);
+          //  $send = "success";
+            if($send="success")
+            {
+                $ins_qry = 'insert into tbl_sms set sms_sender_id = '.$_SESSION['pma_adm_id'].', sms_sender_usnm = "'.$_SESSION['pma_adm_usr_nm'].'", sms_rece_id = '.$member_list[0]['mem_id'].', sms_rece_mn = '.$member_list[0]['mem_m_no'].', sms_sent_time = now(), sms_content="'.$message.'"';
+                $ins_res = mysqli_query($dblink,$ins_qry);
+                if($ins_qry){
+                    echo '<script>success_msg("Success","Message Send SuccessFully","view_profile.php?mbr_no='.$member_list[0]['mem_id'].'");</script>';
+                }
+                else{
+                    $err_msg = mysqli_error($dblink);
+                    echo '<script>swal("'.$err_msg.'")</script>';
+                }
+               // echo "<script>window.alert('".$ins_qry."')</script>";
+                // 
+            }
+        }
     }   
 ?>
 <section class="content profile-page">    
@@ -134,14 +153,16 @@
                                         <h2><strong>Send</strong> Message</h2>
                                     </div>
                                     <div class="body m-b-10">
-                                        <div class="form-group">
-                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                        </div>
-                                        <div class="post-toolbar-b">
-                                           <!--  <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
-                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button> -->
-                                            <button class="btn btn-primary btn-round">Send </button>
-                                        </div>
+                                        <form method="post">
+                                            <div class="form-group">
+                                                <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..." name="message" required></textarea>
+                                            </div>
+                                            <div class="post-toolbar-b">
+                                               <!--  <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
+                                                <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button> -->
+                                                <button type="submit" name="send_sms" class="btn btn-primary btn-round">Send </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

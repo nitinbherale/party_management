@@ -1,14 +1,23 @@
-<?php include 'connect.php'; ?>
+<?php include 'connect.php'; 
+list($master) = exc_qry("select * from tbl_master limit 1");
+define('TITLE', $master[0]['app_title']);
+define('FAVICON',$master[0]['app_favicon']);
+define('LOGO',$master[0]['app_logo']);
+define('META_DESC',$master[0]['app_meta_des']);
+define('META_KEY',$master[0]['app_meta_key']);
+define('SEND_BY',$master[0]['app_send_by']);
+date_default_timezone_set('Asia/Calcutta');
+?>
 <!doctype html>
 <html class="no-js " lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<meta name="description" content="Shivsena Program Management Applicicon-speechation">
-<title>:: Shivsena Party Management :: Home</title>
-<!--<link rel="icon" href="favicon.ico" type="image/x-icon">--> <!-- Favicon-->
-
+<meta name="description" content="<?php echo META_DESC; ?>">
+<meta name="keywords" content="<?php echo META_KEY; ?>">
+<title><?php echo TITLE; ?></title>
+<link rel="icon" href="assets/img/<?php echo FAVICON; ?>" type="image/x-icon"> <!-- Favicon-->
 <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
 <link rel="stylesheet" href="../assets/plugins/morrisjs/morris.min.css" />
@@ -35,7 +44,7 @@
             <div class="col-12">
                 <div class="navbar-logo">
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="index.php"><img src="../assets/images/favicon.png" width="30" alt="InfiniO"><span class="m-l-10">Shivsena Party Management</span></a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/<?php echo LOGO; ?>" width="30" alt="InfiniO"><span class="m-l-10"><?php echo TITLE; ?></span></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="search_bar hidden-xs">

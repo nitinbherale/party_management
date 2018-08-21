@@ -35,9 +35,9 @@ function LgnChk($username,$password)
         $row=mysqli_fetch_array($result_sel);
         //echo count($row);
         $adminid =$row["ad_id"];
-        $_SESSION['id']=$row["ad_id"];
-        $_SESSION['usr_nm']=$row["ad_usr_nm"];
-        $_SESSION['usr_type']=$row["ad_type"];
+        $_SESSION['pma_adm_id']=$row["ad_id"];
+        $_SESSION['pma_adm_usr_nm']=$row["ad_usr_nm"];
+        $_SESSION['pma_adm_usr_type']=$row["ad_type"];
         $query_up="update tbl_adm set ad_sess='".$sess."' where ad_id=".$adminid;
         echo $query_up;
         $result_up=mysqli_query($dblink,$query_up);
