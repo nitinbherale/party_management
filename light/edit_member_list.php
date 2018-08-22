@@ -8,63 +8,38 @@
     }
     else
     {
-         $id = $_POST['id'];
-         list($member_list) = exc_qry("select * from tbl_member WHERE mem_active = 0 order by mem_id desc");
-         if (isset($_POST["edit_member"]))
-        {
-            $error = 0;
-            
-            $fname = mysqli_real_escape_string($dblink,$_POST['fname']);
-            $designation = mysqli_real_escape_string($dblink,$_POST['designation']);
-            $email = mysqli_real_escape_string($dblink,$_POST['email']);
-            $mobile = $_POST['mobile'];
-            $whatsapp_no = $_POST['whatsapp_no'];
-            $district = mysqli_real_escape_string($dblink,$_POST['district']);
-            $tahsil = mysqli_real_escape_string($dblink,$_POST['tahsil']);
-            $street = mysqli_real_escape_string($dblink,$_POST['street']);
-            $city = mysqli_real_escape_string($dblink,$_POST['city']);
-            $p_code = $_POST['p_code'];
-            $gender = $_POST['gender'];
-            $dob = $_POST['dob'];
-            $f_id = mysqli_real_escape_string($dblink,$_POST['f_id']);
-            $t_id = mysqli_real_escape_string($dblink,$_POST['t_id']);
-            $p_pic = $_FILES["p_pic"];
-            $tmp_name = time()."_".$p_pic['name']; 
-            $imgpath = "assets/img/";
-            $description = mysqli_real_escape_string($dblink,stripcslashes($_POST['description']));
-            $group = $_POST['group'];
-            $grp_array = $group[0];
-            for ($i=1; $i < count($group); $i++) { 
+    $id = $_POST['id'];
+
+    if(isset($_POST["edit_member"])){
+      
+       $id = $_POST['id'];
+       $fname = mysqli_real_escape_string($dblink,$_POST['fname']);
+       $designation = mysqli_real_escape_string($dblink,$_POST['designation']);
+       $email = mysqli_real_escape_string($dblink,$_POST['email']);
+       $mobile = $_POST['mobile'];
+       $whatsapp_no = $_POST['whatsapp_no'];
+       $district = mysqli_real_escape_string($dblink,$_POST['district']);
+       $tahsil = mysqli_real_escape_string($dblink,$_POST['tahsil']);
+       $street = mysqli_real_escape_string($dblink,$_POST['street']);
+       $city = mysqli_real_escape_string($dblink,$_POST['city']);
+       $p_code = $_POST['p_code'];
+       $gender = $_POST['gender'];
+       $dob = $_POST['dob'];
+       $f_id = mysqli_real_escape_string($dblink,$_POST['f_id']);
+       $t_id = mysqli_real_escape_string($dblink,$_POST['t_id']);
+       $p_pic = $_FILES["p_pic"];
+       $tmp_name = time()."_".$p_pic['name']; 
+       $imgpath = "assets/img/";
+       $description = mysqli_real_escape_string($dblink,stripcslashes($_POST['description']));
+       $group = $_POST['group'];
+       $grp_array = $group[0];
+       for ($i=1; $i < count($group); $i++) { 
                $grp_array .= ",".$group[$i];
             }
 
-            $add_qry = "";
-            if(strlen($p_pic["name"])>0)
-            {
-                if ($p_pic['size']<1000000) 
-                {
-                    if(!move_uploaded_file($p_pic["tmp_name"],$imgpath.$tmp_name))//storing image in file
-                    {
-                        echo '<script>warning_msg("Error","File upload Failed");</script>'; 
-                        $error = 1;
-                    }
-                    else
-                    {
-                        $add_qry = ",mem_img = '$tmp_name'";
-                    }
-                }
-                else
-                {
-                    echo '<script>warning_msg("Warning","File size is more than 1 mb");</script>'; 
-                            $error = 1;
-                }
-            }
+    }//isset submit
 
-           
-
-             //Update Query
-
-            $upd_qry = "update tbl_member set mem_f_nm = '$fname',mem_dsn = '$designation',mem_email = '$email',mem_m_no =  $mobile ,mem_wp_no = '$whatsapp_no',mem_dis = '$district',mem_tah = $tahsil ,mem_str = '$street', mem_cty = '$city' , mem_ps_code = '$p_code', mem_gen = '$gender', mem_dob = '$dob', mem_fb_lk='$f_id', mem_tw_lk= '$t_id'  where  mem_id = $id ";
+     $upd_qry = "update tbl_member set mem_f_nm = '$fname',mem_dsn = '$designation',mem_email = '$email',mem_m_no =  $mobile ,mem_wp_no = '$whatsapp_no',mem_dis = '$district',mem_tah = $tahsil ,mem_str = '$street', mem_cty = '$city' , mem_ps_code = '$p_code', mem_gen = '$gender', mem_dob = '$dob', mem_fb_lk='$f_id', mem_tw_lk= '$t_id'  where  mem_id = $id ";
 
 
                  $run_upd_qry = mysqli_query ($dblink,$upd_qry);
@@ -72,13 +47,46 @@
 
             if ($run_upd_qry) {
                  echo '<script>success_msg("Success","Data Updated Successfully","index.php");</script>';
-            }
+            }//Upda query
 
-            else{
-                echo "Something went wrong";
-            }
-          // echo "<script>window.alert('button clicked')</script>";
-        }
+
+  if($id>0){
+  list($member_list) = exc_qry("select * from tbl_member where id = $id");
+  //echo count($program);
+
+  $fname = $member_list[0]['set mem_f_nm'];
+
+  $designation = $member_list[0]['mem_dsn'];
+
+  $email = $member_list[0]['mem_email'];
+
+  $mobile = $member_list[0]['mem_m_no'];
+
+  $whatsapp_no = $member_list[0]['mem_wp_no'];
+
+  $district = $member_list[0]['mem_dis'];
+
+  $tahsil = $member_list[0]['mem_tah'];
+
+  $street = $member_list[0]['mem_str'];
+
+  $city = $member_list[0]['mem_cty'];
+
+  $p_code = $member_list[0]['mem_ps_code'];
+
+  $gender = $member_list[0]['mem_gen'];
+
+  $dob = $member_list[0]['mem_dob'];
+  
+  $f_id = $member_list[0]['mem_fb_lk'];
+
+  $t_id = $member_list[0]['mem_tw_lk'];
+
+
+  //echo $pname.$description.$date.$location;
+
+}
+
     }
 ?>
 <section class="content">

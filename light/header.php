@@ -44,7 +44,7 @@ date_default_timezone_set('Asia/Calcutta');
             <div class="col-12">
                 <div class="navbar-logo">
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="index.php"><img src="assets/img/<?php echo LOGO; ?>" width="30" alt="InfiniO"><span class="m-l-10"><?php echo TITLE; ?></span></a>
+                    <a class="navbar-brand" href="index.php"><img src="assets/img/<?php echo LOGO; ?>" width="30" alt="Shivsena Party Management"><span class="m-l-10"><?php echo TITLE; ?></span></a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="search_bar hidden-xs">
