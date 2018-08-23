@@ -35,7 +35,7 @@ if(!isValidUser())
                             <div class="col-lg-6 col-md-8 col-sm-12">
                                 <h2>Member List</h2>
                                 <ul class="breadcrumb p-l-0 p-b-0 ">
-                                    <li class="breadcrumb-item"><a href="index.html">Member <i class="icon-user"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Member <i class="icon-user"></i></a></li>
                                     <!--<li class="breadcrumb-item"></li>-->
                                     <li class="breadcrumb-item active">Member List</li>
                                 </ul>
@@ -93,7 +93,7 @@ if(!isValidUser())
                                             <form method="POST" action="edit_member_list.php">
                                              <input type="hidden" name="id" value="<?php echo $member_list[$i]['mem_id'];?>">
                                             <!--<a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>-->
-                                            <button type="submit" name="edit_member" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></button>
+                                            <button type="submit" name="" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></button>
                                             </form>
                                             <form method="POST">
                                                 <input type="hidden" name="id" value="<?php echo $member_list[$i]['mem_id'];?>">
