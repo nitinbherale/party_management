@@ -6,12 +6,13 @@ ob_start();
 	$dbusername="root";
 	$dbpassword="";
     $dbname="program_mng";
-	$dblink=mysqli_connect($dbhost,$dbusername,$dbpassword)or die("Database connection failed!!!");
+	$dblink=mysqli_connect($dbhost,$dbusername,$dbpassword,$dbname)or die("Database connection failed!!!");
 	if($dblink)
-	{	mysqli_select_db($dblink,$dbname);
+	{	
+    mysqli_select_db($dblink,$dbname);
 		$MxAlw=25; //Paging limit
 		include("functions.php");
-        //echo "This is my page";
+     // echo "<script>window.alert('Database connected')</script>";
 	} else echo $PgErr="Page you have requested could not be found";
 	  $expireAfter = 10;
  
