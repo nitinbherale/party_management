@@ -65,9 +65,13 @@
                                         <td><?php echo $events[$i]['evnt_str']; ?>,<?php echo $events[$i]['evnt_cty']; ?>,<?php echo $events[$i]['evnt_pin_cod']; ?></td>
                                          <td><img src="assets/img/events/<?php echo $events[$i]['evnt_pic']; ?>" width="100" alt="Product img"></td>
                                         <td> 
-                                            <?php if($events[$i]['evnt_date']>=date('Y-m-d')) {
-                                               echo "This is my text";
-                                            } ?>
+                                            <?php if($events[$i]['evnt_date']>=date('Y-m-d')) { ?>
+                                                <form method="POST">
+                                                    <input type="text" name="evnt_id" value="<?php echo $events[$i]['evnt_id']; ?>">
+                                                    <button type="submit" class="btn btn-success">Approve</button>
+                                                    <button type="submit" class="btn btn-danger">Disapprove</button>
+                                                </form>
+                                            <?php } ?>
                                         </td>
                                        <!--  <td>Yuvasainik</td> -->
                                        <!--  <td><span class="badge badge-success bg-success text-white">Active</span></td> -->

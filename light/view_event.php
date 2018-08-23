@@ -1,6 +1,6 @@
 <?php include("header.php");?>
 <!-- JQuery DataTable Css -->
-<link rel="stylesheet" href="../assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
+
 
 <!-- Main Content -->
 <section class="content ecommerce-page">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="member-img">
                         <a href="index.php" class="">
-                        <img src="assets/img/img_event.jpeg" class="img-responsive" alt="event_img">
+                        <img src="assets/img/events/no_image.png" class="img-responsive" alt="event_img">
                         </a>
                     </div>
                     <div class="body">
@@ -101,14 +101,6 @@
 <!-- Jquery Core Js --> 
 
 <!-- Jquery DataTable Plugin Js --> 
-<script src="assets/bundles/datatablescripts.bundle.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
-
-<script src="assets/js/pages/tables/jquery-datatable.js"></script>
 
 <style type="text/css">
 	/*.oth_listing{padding-bottom: 10px;}*/
