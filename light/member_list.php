@@ -22,7 +22,7 @@ if(!isValidUser())
  ?>
 
 <!-- JQuery DataTable Css -->
-<link rel="stylesheet" href="../assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
+
 
 <!-- Main Content -->
 <section class="content ecommerce-page">
@@ -115,11 +115,4 @@ if(!isValidUser())
 <!-- Jquery Core Js --> 
 
 <!-- Jquery DataTable Plugin Js --> 
-<script src="assets/bundles/datatablescripts.bundle.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/dataTables.buttons.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.bootstrap4.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.colVis.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.html5.min.js"></script>
-<script src="../assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
 
-<script src="assets/js/pages/tables/jquery-datatable.js"></script>
