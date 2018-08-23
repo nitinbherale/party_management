@@ -2,13 +2,16 @@
 <link rel="stylesheet" href="../assets/plugins/multi-select/css/multi-select.css">
 <link rel="stylesheet" href="../assets/plugins/bootstrap-select/css/bootstrap-select.css" />
 <?php 
-if(!isValidUser())   redirect("../login.php");
-
- $id = $_POST['id'];
-if(isset($_POST["edit_member"]))
-{  
-  $id = $_POST['id'];
-
+    if(!isValidUser())  
+    {
+    redirect("login.php"); 
+    }
+    else
+    {
+    $id = $_POST['id'];
+    if(isset($_POST["edit_member"])){
+      
+       $id = $_POST['id'];
        $fname = mysqli_real_escape_string($dblink,$_POST['fname']);
        $designation = mysqli_real_escape_string($dblink,$_POST['designation']);
        $email = mysqli_real_escape_string($dblink,$_POST['email']);
@@ -23,78 +26,44 @@ if(isset($_POST["edit_member"]))
        $dob = $_POST['dob'];
        $f_id = mysqli_real_escape_string($dblink,$_POST['f_id']);
        $t_id = mysqli_real_escape_string($dblink,$_POST['t_id']);
-       $description = mysqli_real_escape_string($dblink,$_POST['description']);
        $p_pic = $_FILES["p_pic"];
        $tmp_name = time()."_".$p_pic['name']; 
        $imgpath = "assets/img/";
-
-  //$data = $user_id.$first_name.$email.$gender.$type.$street.$city.$postal_code.$phone;
-
-  /*$qry = "update tbl_admin set fname = '$first_name',gender = '$gender',email = '$email',type = $type ,street = '$street',city = '$city',postal_code = $postal_code ,phone = '$phone' where  id = $user_id";*/
-
-  $upd_qry = "UPDATE tbl_member SET mem_f_nm = '$fname', mem_desn = '$designation', mem_email = '$email', mem_m_no =  $mobile ,mem_wp_no = '$whatsapp_no',mem_dis = '$district',mem_tah = '$tahsil' ,mem_str = '$street', mem_cty = '$city' , mem_ps_cd = '$p_code', mem_gen = '$gender', mem_dob = '$dob', mem_fb_lk='$f_id', mem_tw_lk= '$t_id' mem_des = '$description' WHERE  mem_id = $id ";
-
-  $result = mysqli_query($dblink,$upd_qry);
-
-  if($result){
-
-     echo '<script>success_msg("Success","Data Updated Successfully","member_list.php");</script>';
-
-  }
-
-  else{
-
-      echo $msg = mysqli_error($dblink);
-
-     //echo '<script>success_msg("Success","Sorry Unable To Request Your Process","member_list.php");</script>';
-
-  }
-}
-if($id>0){
-
-  list($result) = exc_qry("select * from tbl_member where mem_id = $id");
-
-  if(count($result)>0){
-
-  $fname = $result[0]['mem_f_nm'];
-
-  $designation = $result[0]['mem_desn'];
-
-  $email = $result[0]['mem_email'];
-
-  $mobile = $result[0]['mem_m_no'];
-
-  $whatsapp_no = $result[0]['mem_wp_no'];
-
-  $district = $result[0]['mem_dis'];
-
-  $tahsil = $result[0]['mem_tah'];
-
-  $street = $result[0]['mem_str'];
-
-  $city = $result[0]['mem_cty'];
-
-  $p_code = $result[0]['mem_ps_cd'];
-
-  $gender = $result[0]['mem_gen'];
-
-  $dob = $result[0]['mem_dob'];
+       $description = mysqli_real_escape_string($dblink,stripcslashes($_POST['description']));
+       $group = $_POST['group'];
+       $grp_array = $group[0];
+       for ($i=1; $i < count($group); $i++) { 
+               $grp_array .= ",".$group[$i];
+            }
+    
+     $upd_qry = "update tbl_member set mem_f_nm = '$fname',mem_dsn = '$designation',mem_email = '$email',mem_m_no =  $mobile ,mem_wp_no = '$whatsapp_no',mem_dis = '$district',mem_tah = $tahsil ,mem_str = '$street', mem_cty = '$city' , mem_ps_code = '$p_code', mem_gen = '$gender', mem_dob = '$dob', mem_fb_lk='$f_id', mem_tw_lk= '$t_id'  where  mem_id = $id ";
+                 $run_upd_qry = mysqli_query ($dblink,$upd_qry);
+            if ($run_upd_qry) {
+                 echo '<script>success_msg("Success","Data Updated Successfully","index.php");</script>';
+            }//Upda query
+}//isset submit
+  if($id>0){
+  list($member_list) = exc_qry("select * from tbl_member where mem_id = $id");
+  //echo count($program);
+  $fname = $member_list[0]['mem_f_nm'];
+  $designation = $member_list[0]['mem_dsn'];
+  $email = $member_list[0]['mem_email'];
+  $mobile = $member_list[0]['mem_m_no'];
+  $whatsapp_no = $member_list[0]['mem_wp_no'];
+  $district = $member_list[0]['mem_dis'];
+  $tahsil = $member_list[0]['mem_tah'];
+  $street = $member_list[0]['mem_str'];
+  $city = $member_list[0]['mem_cty'];
+  $p_code = $member_list[0]['mem_ps_code'];
+  $gender = $member_list[0]['mem_gen'];
+  $dob = $member_list[0]['mem_dob'];
   
-  $f_id = $result[0]['mem_fb_lk'];
-
-  $t_id = $result[0]['mem_tw_lk'];
-
-  $description = $result[0]['mem_dis'];
-  }
-  else{
-    header("location:member_list.php");
-  }
+  $f_id = $member_list[0]['mem_fb_lk'];
+  $t_id = $member_list[0]['mem_tw_lk'];
+  //echo $pname.$description.$date.$location;
 }
-else{
-  header("location:member_list.php");
-}
+    }
 ?>
-
 <section class="content">
     <div class="container">
         <div class="row clearfix">
@@ -256,6 +225,3 @@ else{
 <!--End Modal-->
 
 <script src="../assets/plugins/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js --> 
-
-
-

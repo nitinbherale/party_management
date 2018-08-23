@@ -1,4 +1,15 @@
 <?php include("header.php") ?>
+<?php 
+    if(!isValidUser())  
+    {
+        redirect("login.php"); 
+    }
+    else
+    {
+        list($events) = exc_qry("select * from tbl_evnt where evnt_active = 0 order by evnt_id desc");
+       //echo "<script>window.alert('".count($events)."')</script>"; 
+    }
+ ?>
 <section class="content">
     <div class="container">
         <div class="row clearfix">
@@ -24,174 +35,54 @@
             </div>
         </div>
         <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">                    
-                    <div class="body">
-                        <button type="button" class="btn btn-round btn-simple btn-sm btn-default btn-filter" data-target="all">Todos</button>
-                        <button type="button" class="btn btn-round btn-simple btn-sm btn-success btn-filter" data-target="approved">Approved</button>
-                        <button type="button" class="btn btn-round btn-simple btn-sm btn-warning btn-filter" data-target="suspended">Suspended</button>
-                        <button type="button" class="btn btn-round btn-simple btn-sm btn-info btn-filter" data-target="pending">Pending</button>
-                        <button type="button" class="btn btn-round btn-simple btn-sm btn-danger btn-filter" data-target="blocked">Blocked</button>                        
-                    </div>
-                    <div class="header">
-                        <h2><strong>Event</strong> List</h2>                        
-                    </div>
+            <div class="col-lg-12">
+                <div class="card product_item_list product-order-list">
                     <div class="body">
                         <div class="table-responsive">
-                            <table class="table table-filter table-hover m-b-0">
-                            <thead>
+                            <table id="mainTable" class="table table-bordered table-striped table-hover dataTable js-exportable m-b-0">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <th>Sr. No.</th>
+                                        <th>Id</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Date and Time</th>
+                                        <th>Location</th>
                                         <th>Image</th>
-                                        <th>Event Name</th>
-                                        <th>Assigned By</th>
                                         <th>Assigned To</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                       <!--  <th>Groups</th> -->
+                                       <!--  <th data-breakpoints="xs md">Status</th> -->
+                                        <th data-breakpoints="sm xs md">Action</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
-                                    <tr data-status="approved">
-                                        <td>1</td>
-                                        <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 1</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td width="250px">
-                                            <div class="progress">
-                                                <div class="progress-bar l-green" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="suspended">
-                                        <td>2</td>
-                                        <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 2</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
+                                     <?php for ($i=0; $i < count($events); $i++) { ?>                                   
+                                    <tr>
+                                        <td><?php echo $i+1; ?></td>
+                                        <td><?php echo $events[$i]['evnt_tit']; ?></td>
+                                        <td><?php echo $events[$i]['evnt_des']; ?></td>
+                                        <td><?php echo date('d F Y', strtotime($events[$i]['evnt_date'])); ?>, 
+                                            <?php echo date('h:i a',strtotime($events[$i]['evnt_time'])); ?></td>
+                                        <td><?php echo $events[$i]['evnt_str']; ?>,<?php echo $events[$i]['evnt_cty']; ?>,<?php echo $events[$i]['evnt_pin_cod']; ?></td>
+                                         <td><img src="assets/img/events/<?php echo $events[$i]['evnt_pic']; ?>" width="100" alt="Product img"></td>
+                                        <td></td>
+                                       <!--  <td>Yuvasainik</td> -->
+                                       <!--  <td><span class="badge badge-success bg-success text-white">Active</span></td> -->
                                         <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-amber" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;"></div>
-                                            </div>
+                                            <a href="view_profile.php?mbr_no=<?php echo $member_list[$i]['mem_id']; ?>" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-eye"></i></a>
+
+                                            <form method="POST" action="edit_member_list.php">
+                                             <input type="hidden" name="id" value="<?php echo $member_list[$i]['mem_id'];?>">
+                                            <!--<a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></a>-->
+                                            <button type="submit" name="edit_member" class="btn btn-sm btn-default waves-effect waves-float waves-green"><i class="zmdi zmdi-edit"></i></button>
+                                            </form>
+                                            <form method="POST">
+                                                <input type="hidden" name="id" value="<?php echo $member_list[$i]['mem_id'];?>">
+                                            <!--<a href="javascript:void(0);" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></a>-->
+                                             <button type="submit" name="delete_member" class="btn btn-sm btn-default waves-effect waves-float waves-red"><i class="zmdi zmdi-delete"></i></button>
+                                            </form>
                                         </td>
-                                        <td><span class="badge badge-warning">Suspended</span></td>
-                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="blocked">
-                                        <td>3</td>
-                                       <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 2</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-coral" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" style="width: 16%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-danger">Blocked</span></td>
-                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="approved">
-                                        <td>4</td>
-                                        <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 4</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-green" role="progressbar" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100" style="width: 67%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="approved">
-                                        <td>5</td>
-                                        <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 6</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-green" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-success">Approved</span></td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="pending">
-                                        <td>6</td>
-                                        <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 6</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-blue" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width:32%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-info">Pending</span></td>
-                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr data-status="pending">
-                                        <td>7</td>
-                                         <td><div class="media-object"><img src="../assets/images/xs/avatar1.jpeg" alt="" width="35px" class="rounded-circle"></div></td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Event 7</a></h6>
-                                            <small>Created 14.July.2018</small>
-                                        </td>
-                                        <td>nitin.bherale@nmpl.biz</td>
-                                        <td>
-                                            <div class="progress">
-                                                <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge badge-info">Pending</span></td>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
+                                    </tr>   
+                                    <?php  } ?>    
                                 </tbody>
                             </table>
                         </div>
