@@ -37,7 +37,7 @@
                $grp_array .= ",".$group[$i];
             }
 
-    }//isset submit
+    
 
      $upd_qry = "update tbl_member set mem_f_nm = '$fname',mem_dsn = '$designation',mem_email = '$email',mem_m_no =  $mobile ,mem_wp_no = '$whatsapp_no',mem_dis = '$district',mem_tah = $tahsil ,mem_str = '$street', mem_cty = '$city' , mem_ps_code = '$p_code', mem_gen = '$gender', mem_dob = '$dob', mem_fb_lk='$f_id', mem_tw_lk= '$t_id'  where  mem_id = $id ";
 
@@ -48,13 +48,13 @@
             if ($run_upd_qry) {
                  echo '<script>success_msg("Success","Data Updated Successfully","index.php");</script>';
             }//Upda query
-
+}//isset submit
 
   if($id>0){
-  list($member_list) = exc_qry("select * from tbl_member where id = $id");
+  list($member_list) = exc_qry("select * from tbl_member where mem_id = $id");
   //echo count($program);
 
-  $fname = $member_list[0]['set mem_f_nm'];
+  $fname = $member_list[0]['mem_f_nm'];
 
   $designation = $member_list[0]['mem_dsn'];
 
