@@ -64,7 +64,11 @@
                                             <?php echo date('h:i a',strtotime($events[$i]['evnt_time'])); ?></td>
                                         <td><?php echo $events[$i]['evnt_str']; ?>,<?php echo $events[$i]['evnt_cty']; ?>,<?php echo $events[$i]['evnt_pin_cod']; ?></td>
                                          <td><img src="assets/img/events/<?php echo $events[$i]['evnt_pic']; ?>" width="100" alt="Product img"></td>
-                                        <td></td>
+                                        <td> 
+                                            <?php if($events[$i]['evnt_date']>=date('Y-m-d')) {
+                                               echo "This is my text";
+                                            } ?>
+                                        </td>
                                        <!--  <td>Yuvasainik</td> -->
                                        <!--  <td><span class="badge badge-success bg-success text-white">Active</span></td> -->
                                         <td>
