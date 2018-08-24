@@ -8,18 +8,18 @@
         list($members) = exc_qry("select * from tbl_member where mem_active = 0");
         if (isset($_POST['add_program'])) 
         {
-            $title = mysqli_real_escape_string($dblink,$_POST['title']);
-            $description = mysqli_real_escape_string($dblink,$_POST['description']);
-            $p_date = $_POST['p_date'];
-            $p_time = $_POST['p_time'];
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $e_date = $_POST['e_date'];
+            $e_time = $_POST['e_time'];
             $coor_array = $_POST['coor_person'];
             $coor_per = $coor_array[0];
             for ($i=1; $i < count($coor_array); $i++) 
             { 
                 $coor_per .= ",".$coor_array[$i];
             }
-            $street = mysqli_real_escape_string($dblink,$_POST['street']);
-            $city = mysqli_real_escape_string($dblink,$_POST['city']);
+            $street = $_POST['street'];
+            $city = $_POST['city'];
             $pin_code = $_POST['pin_code'];
             $e_pic = $_FILES["e_pic"];
             $tmp_name = time()."_".$e_pic['name']; 
@@ -37,7 +37,7 @@
                 }
                 else
                 {
-                    echo '<script>warning_msg("Warning","File size is more than 1 mb");</script>'; 
+                    echo '<script>warning_msg("Warning","The selected file size is too large, Please select a file less than 1MB ");</script>'; 
                             $error = 1;
                 }
             }
@@ -46,19 +46,11 @@
                 $tmp_name = "no_image.png";
                
             }
-
-            //insert query
-            $ins_qry = 'insert into tbl_evnt set evnt_tit = "'.$title.'", evnt_des = "'.$description.'", evnt_date = "'.$p_date.'", evnt_time = "'.$p_time.'", evnt_str = "'.$street.'", evnt_cty = "'.$city.'", evnt_pin_cod = "'.$pin_code.'", evnt_coor_per = "'.$coor_per.'", evnt_add_by = '.$_SESSION['pma_adm_id'].', evnt_add_time = now(), evnt_pic = "'.$tmp_name.'"';
-            $result_qry = mysqli_query($dblink,"select * from tbl_member");
-            if ($result_qry) 
-            {
-               echo '<script>success_msg("Success","Member added Successfully","add_new_member.php");</script>'; 
-            }
-            else
-            {
-                $msg = mysqli_error($dblink);
-                echo '<script>swal("'.$msg.'");</script>'; 
-            }
+            $qry = "select * from evnt_member";
+            list($res) = exc_qry($qry);
+            
+            echo "<script>window.alert('".count($res)."')</script>";
+            
         }
     }
  ?>
@@ -106,18 +98,15 @@
                             </div>
                              <label for="Event_date">Date *</label>
                             <div class="form-group">                                
-                                <input type="date" name="p_date" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $p_date; ?>" class="form-control" placeholder="Enter Date *">
+                                <input type="date" name="e_date" required min="<?php echo date('Y-m-d'); ?>" value="<?php echo $e_date; ?>" class="form-control" placeholder="Enter Date *">
                             </div>
                              <label for="Event_time">Time *</label>
                             <div class="form-group">                                
-                                <input type="time" name="p_time" required class="form-control" placeholder="Enter Time *" value="<?php echo $p_time; ?>">
+                                <input type="time" name="e_time" required class="form-control" placeholder="Enter Time *" value="<?php echo $e_time; ?>">
                             </div>
                            
 
-                          <!--  <label for="Coordinate_email">Event Coordinate Email </label>
-                            <div class="form-group">                                
-                                <input type="email" name="coor_per" class="form-control" placeholder="Coordinate Person Email ">
-                            </div> -->
+                          
                             <label for="Coordinate_email">Event Coordinate Person </label>
                             <div class="form-group" >                                
                                 <select class="form-control show-tick" multiple name="coor_person[]" required>

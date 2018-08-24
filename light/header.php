@@ -296,7 +296,7 @@ date_default_timezone_set('Asia/Calcutta');
     swal({
         title: title,
         text: text,
-        timer: 2000,
+        timer: 4000,
         type: "warning",
         showConfirmButton: false
         });

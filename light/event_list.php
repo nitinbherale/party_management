@@ -7,6 +7,26 @@
     else
     {
         list($events) = exc_qry("select * from tbl_evnt where evnt_active = 0 order by evnt_id desc");
+
+        //approve event
+        if(isset($_POST['approve']))
+        {
+            $evnt_id = $_POST['evnt_id'];
+            $up_qry = "update tbl_evnt set evnt_appr = 1 where evnt_id = $evnt_id";
+            $up_res = mysqli_query($dblink,$up_qry);
+            if ($up_res) 
+            {
+
+                echo '<script>success_msg("Success","Event Approved Successfully","event_list.php");</script>';
+
+            }
+            else
+            {
+                $msg = mysqli_error($dblink);
+                echo "<script>swal('Error in approve')</script>";
+            }
+            
+        }
        //echo "<script>window.alert('".count($events)."')</script>"; 
     }
  ?>
@@ -63,15 +83,23 @@
                                         <td><?php echo date('d F Y', strtotime($events[$i]['evnt_date'])); ?>, 
                                             <?php echo date('h:i a',strtotime($events[$i]['evnt_time'])); ?></td>
                                         <td><?php echo $events[$i]['evnt_str']; ?>,<?php echo $events[$i]['evnt_cty']; ?>,<?php echo $events[$i]['evnt_pin_cod']; ?></td>
-                                         <td><img src="assets/img/events/<?php echo $events[$i]['evnt_pic']; ?>" width="100" alt="Product img"></td>
+                                        <td><img src="assets/img/events/<?php echo $events[$i]['evnt_pic']; ?>" width="100" alt="Product img"></td>
                                         <td> 
-                                            <?php if($events[$i]['evnt_date']>=date('Y-m-d')) { ?>
+                                        <?php if($events[$i]['evnt_date']>=date('Y-m-d')) { //if event date is valid 
+                                                if ($events[$i]['evnt_appr']==0) { //if event pending ?>
                                                 <form method="POST">
-                                                    <input type="text" name="evnt_id" value="<?php echo $events[$i]['evnt_id']; ?>">
-                                                    <button type="submit" class="btn btn-success">Approve</button>
-                                                    <button type="submit" class="btn btn-danger">Disapprove</button>
+                                                    <input type="hidden" name="evnt_id" value="<?php echo $events[$i]['evnt_id']; ?>">
+                                                    <button type="submit" class="btn btn-success" name="approve" > Approve </button>
+                                                    <button type="submit" class="btn btn-danger" name="disapprove" > Disapprove </button>
                                                 </form>
-                                            <?php } ?>
+                                                <?php }
+
+                                                if ($events[$i]['evnt_appr']==1) { //if event is approved ?>
+                                                    <button type="submit" class="btn btn-success" name="approve" > Assign </button>
+                                                    <button type="submit" class="btn btn-danger" name="disapprove" > Cancel </button>
+                                                <?php } ?>
+                                               
+                                        <?php } ?>
                                         </td>
                                        <!--  <td>Yuvasainik</td> -->
                                        <!--  <td><span class="badge badge-success bg-success text-white">Active</span></td> -->
