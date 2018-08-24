@@ -1,4 +1,6 @@
-<?php include("header.php") ?>
+<?php include("header.php");
+list($groups) = exc_qry("select * from tbl_grp where grp_act = 0");
+ ?>
 <section class="content">
     <div class="container">
         <div class="row clearfix">
@@ -7,11 +9,10 @@
                     <div class="body block-header">
                         <div class="row">
                             <div class="col-lg-6 col-md-8 col-sm-12">
-                                <h2>Event List</h2>
+                                <h2>Groups</h2>
                                 <ul class="breadcrumb p-l-0 p-b-0 ">
                                     <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Create Event</a></li>
-                                    <li class="breadcrumb-item active">Event List</li>
+                                    <li class="breadcrumb-item active">Group List</li>
                                 </ul>
                             </div>            
                             <div class="col-lg-6 col-md-4 col-sm-12 text-right">
@@ -42,17 +43,23 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr data-status="approved">
-                                        <td>1</td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Shivsena</a></h6>
+                                    <?php for ($i=0; $i < count($groups); $i++) { ?>
+                                    <tr>
+                                        <td><?php echo $i+1; ?></td>
+                                        <td class="project-title">
+                                            <h6><?php echo $groups[$i]['grp_nm']; ?></h6>
+                                        </td>
                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
+                                            <!-- <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a> -->
+                                            <button class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></button>
+                                            <form method="post">
+                                                <input type="hidden" name="grp_id" value="<?php echo $groups[$i]['grp_id'] ?>">
+                                                <button name="grp_del" type="submit" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
-                                     <tr data-status="approved">
+                                    <?php } ?>
+                                    <!--  <tr data-status="approved">
                                         <td>2</td>
                                          <td class="project-title">
                                             <h6><a href="#">Yuvasena</a></h6>
@@ -61,17 +68,7 @@
                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
                                              <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
                                         </td>
-                                    </tr>
-                                     <tr data-status="approved">
-                                        <td>3</td>
-                                         <td class="project-title">
-                                            <h6><a href="#">Other</a></h6>
-                                        <td class="project-actions">
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-eye"></i></a>
-                                            <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-edit"></i></a>
-                                             <a href="#" class="btn btn-neutral btn-sm"><i class="zmdi zmdi-delete"></i></a>
-                                        </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

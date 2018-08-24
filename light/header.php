@@ -319,22 +319,39 @@ date_default_timezone_set('Asia/Calcutta');
 
 
 <!--Modal-->
-
+<?php 
+if (isset($_POST['add_group'])) 
+{
+    $grp_name = $_POST['grp_name'];
+    $grp_ins = "insert into tbl_grp set grp_nm = '$grp_name'";
+    $grp_res = mysqli_query($dblink,$grp_ins);
+    if ($grp_res) {
+       echo '<script>swal("Group Added Successfully");</script>'; 
+    }
+    else
+    {
+        echo '<script>swal("Error");</script>';
+    }
+    
+}
+?>
   <div class="modal fade" id="smallModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="title" id="smallModalLabel">Add New Group</h4>
             </div>
-            <div class="modal-body"> 
-               <div class="form-group">                                    
-                    <input type="text" class="form-control" placeholder="Add New Group">
+            <form method="post">
+                <div class="modal-body"> 
+                   <div class="form-group">                                    
+                        <input type="text" name="grp_name" class="form-control" placeholder="Add New Group">
+                    </div>
                 </div>
-             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-round waves-effect">Add </button>
-                <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="submit" name="add_group" class="btn btn-default btn-round waves-effect">Add </button>
+                    <button type="button" class="btn btn-danger btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

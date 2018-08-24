@@ -35,7 +35,7 @@ CREATE TABLE `tbl_adm` (
 
 /*Data for the table `tbl_adm` */
 
-insert  into `tbl_adm`(`ad_id`,`ad_f_nm`,`ad_usr_nm`,`ad_pwd`,`ad_mob_no`,`ad_mail`,`ad_type`,`ad_active`,`ad_pic`,`ad_sess`) values (1,'Akshata Pawar','akshata','675737b908ed6fa14bb6c3d7157f49d6','8652598488','akshatapawar129@gmail.com',0,0,NULL,'k3mtqj6u0eipotgdr451ou70h7');
+insert  into `tbl_adm`(`ad_id`,`ad_f_nm`,`ad_usr_nm`,`ad_pwd`,`ad_mob_no`,`ad_mail`,`ad_type`,`ad_active`,`ad_pic`,`ad_sess`) values (1,'Akshata Pawar','akshata','675737b908ed6fa14bb6c3d7157f49d6','8652598488','akshatapawar129@gmail.com',0,0,NULL,'ddjntjk4qtenc20u3kpcn18bb4');
 
 /*Table structure for table `tbl_evnt` */
 
@@ -62,17 +62,32 @@ CREATE TABLE `tbl_evnt` (
   `evnt_add_by` int(11) DEFAULT NULL,
   `evnt_add_time` datetime DEFAULT NULL,
   `evnt_assg_to_id` int(11) DEFAULT NULL,
-  `evnt_assg_to_name` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `evnt_assg_to_name` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `evnt_assg_time` datetime DEFAULT NULL,
   `evnt_assg` int(11) DEFAULT '0',
   `evnt_noti` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `evnt_cnl` int(11) DEFAULT '0',
   PRIMARY KEY (`evnt_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `tbl_evnt` */
 
-insert  into `tbl_evnt`(`evnt_id`,`evnt_tit`,`evnt_des`,`evnt_date`,`evnt_time`,`evnt_str`,`evnt_cty`,`evnt_pin_cod`,`evnt_coor_per`,`evnt_pic`,`evnt_appr`,`evnt_appr_time`,`evnt_appr_by`,`evnt_dis_appr_time`,`evnt_dis_appr_by`,`evnt_active`,`evnt_edit_time`,`evnt_add_by`,`evnt_add_time`,`evnt_assg_to_id`,`evnt_assg_to_name`,`evnt_assg_time`,`evnt_assg`,`evnt_noti`,`evnt_cnl`) values (1,'Self Defence','This event orgnized on 24/08/2018','2018-08-24','14:00:00','Gokhale Road','mumbai','426633','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 15:40:47',NULL,'',NULL,0,NULL,0),(2,'Self Defence','This event orgnized on 24/08/2018','2018-08-24','12:51:00','Gokhale Road','mumbai','402233','1,2','1535019384_Untitled-3-01.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 15:46:44',NULL,'',NULL,0,NULL,0),(3,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','400263','1,2','1535019766_Untitled-3-01.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 15:54:06',NULL,'',NULL,0,NULL,0),(4,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:17:56',NULL,'',NULL,0,NULL,0),(5,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:02',NULL,'',NULL,0,NULL,0),(6,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:02',NULL,'',NULL,0,NULL,0),(7,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:03',NULL,'',NULL,0,NULL,0),(8,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:03',NULL,'',NULL,0,NULL,0),(9,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:03',NULL,'',NULL,0,NULL,0),(10,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:20:10',NULL,'',NULL,0,NULL,0),(11,'Aarogy Shibir','This progrm is orgnized on 24/08/2018','2018-08-25','14:00:00','Sangharsh Nagar','Mubmai','425636','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-23 16:21:23',NULL,'',NULL,0,NULL,0);
+insert  into `tbl_evnt`(`evnt_id`,`evnt_tit`,`evnt_des`,`evnt_date`,`evnt_time`,`evnt_str`,`evnt_cty`,`evnt_pin_cod`,`evnt_coor_per`,`evnt_pic`,`evnt_appr`,`evnt_appr_time`,`evnt_appr_by`,`evnt_dis_appr_time`,`evnt_dis_appr_by`,`evnt_active`,`evnt_edit_time`,`evnt_add_by`,`evnt_add_time`,`evnt_assg_to_id`,`evnt_assg_to_name`,`evnt_assg_time`,`evnt_assg`,`evnt_noti`,`evnt_cnl`) values (37,'à¤†à¤°à¥‹à¤—à¥à¤¯ à¤¶à¤¿à¤¬à¥€à¤°','à¤®à¤‚à¤—à¤³à¤µà¤¾à¤° à¤¦à¤¿. à¥¨8 à¤‘à¤—à¤¸à¥à¤Ÿ à¥¨à¥¦à¥§à¥® à¤°à¥‹à¤œà¥€ à¤¦à¥à¤ªà¤¾à¤°à¥€ à¥¨.à¥¦à¥¦ à¤µà¤¾à¤œà¤¤à¤¾ à¤œà¤¨à¤¤à¤¾ à¤µà¤¸à¤¾à¤¹à¤¤,à¤ªà¤°à¥à¤µà¤¤à¥€ à¤¯à¥‡à¤¥à¥‡ \"à¤†à¤°à¥‹à¤—à¥à¤¯ à¤¶à¤¿à¤¬à¥€à¤° \" à¤¯à¤¾ à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®à¤¾à¤šà¥‡ à¤†à¤¯à¥‹à¤œà¤¨ à¤•à¤°à¤£à¥à¤¯à¤¾à¤¤ à¤†à¤²à¥‡ à¤†à¤¹à¥‡.','2018-08-28','14:00:00','Janata Vasahat, Jai Bhawani Nagar, Parvati','pune','400235','1,2,3','1535115067_Penguins.jpg',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-24 18:21:07',NULL,NULL,NULL,0,NULL,0),(38,'à¤¸à¥‡à¤²à¥à¤« à¤¡à¤¿à¤«à¥‡à¤¨à¥à¤¸','à¤¸à¥‹à¤®à¤µà¤¾à¤° à¤¦à¤¿. à¥¨7 à¤‘à¤—à¤¸à¥à¤Ÿ à¥¨à¥¦à¥§à¥® à¤°à¥‹à¤œà¥€ à¤¦à¥à¤ªà¤¾à¤°à¥€ à¥¦à¥¨.à¥¦à¥¦ à¤µà¤¾à¤œà¤¤à¤¾ à¤•à¤®à¤¿à¤¨à¥à¤¸ à¤•à¥‰à¤²à¥‡à¤œ à¤¯à¥‡à¤¥à¥‡ \"à¤¸à¥‡à¤²à¥à¤« à¤¡à¤¿à¤«à¥‡à¤¨à¥à¤¸\" à¤¯à¤¾ à¤•à¤¾à¤°à¥à¤¯à¤•à¥à¤°à¤®à¤¾à¤šà¥‡ à¤†à¤¯à¥‹à¤œà¤¨ à¤•à¤°à¤£à¥à¤¯à¤¾à¤¤ à¤†à¤²à¥‡ à¤†à¤¹à¥‡.','2018-08-27','14:00:00','cummins college,kothrud','Pune','411050','1,2','no_image.png',0,NULL,NULL,NULL,NULL,0,NULL,1,'2018-08-24 18:28:20',NULL,NULL,NULL,0,NULL,0);
+
+/*Table structure for table `tbl_grp` */
+
+DROP TABLE IF EXISTS `tbl_grp`;
+
+CREATE TABLE `tbl_grp` (
+  `grp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `grp_nm` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `grp_act` int(11) DEFAULT '0',
+  PRIMARY KEY (`grp_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/*Data for the table `tbl_grp` */
+
+insert  into `tbl_grp`(`grp_id`,`grp_nm`,`grp_act`) values (1,'Shivesna',0),(2,'Shivesna',0),(3,'Yuvasena',0),(4,'Yuvasena',0),(5,'Yuvasena',0);
 
 /*Table structure for table `tbl_master` */
 
@@ -87,12 +102,13 @@ CREATE TABLE `tbl_master` (
   `app_head_name` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `app_head_email` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   `app_head_m_no` decimal(10,0) DEFAULT NULL,
-  `app_send_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `app_send_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `app_mail_send_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `tbl_master` */
 
-insert  into `tbl_master`(`app_title`,`app_meta_key`,`app_meta_des`,`app_favicon`,`app_logo`,`app_head_name`,`app_head_email`,`app_head_m_no`,`app_send_by`) values ('Shivsena Party Management','Shivsena,Yuvasena','Shivsena Program Management Application','favicon.ico','logo.png','Aaditya Thackeray','akshatapawar129gmail.com','8652598488','ShivSena Digital Media Team');
+insert  into `tbl_master`(`app_title`,`app_meta_key`,`app_meta_des`,`app_favicon`,`app_logo`,`app_head_name`,`app_head_email`,`app_head_m_no`,`app_send_by`,`app_mail_send_by`) values ('Shivsena Party Management','Shivsena,Yuvasena','Shivsena Program Management Application','favicon.ico','logo.png','Aaditya Thackeray','akshatapawar129gmail.com','8652598488','ShivSena Digital Media Team',NULL);
 
 /*Table structure for table `tbl_member` */
 
@@ -119,11 +135,11 @@ CREATE TABLE `tbl_member` (
   `mem_grp` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mem_active` int(11) DEFAULT '0',
   PRIMARY KEY (`mem_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `tbl_member` */
 
-insert  into `tbl_member`(`mem_id`,`mem_f_nm`,`mem_desn`,`mem_email`,`mem_m_no`,`mem_wp_no`,`mem_dis`,`mem_tah`,`mem_str`,`mem_cty`,`mem_ps_cd`,`mem_gen`,`mem_dob`,`mem_fb_lk`,`mem_tw_lk`,`mem_img`,`mem_srt_info`,`mem_grp`,`mem_active`) values (1,'Akshata Pawar','web developer','akshatapawar129@gmail.com','8652598488','8652598487','mumbai suburban','kurla','sangharsh nagar','mumbai','402563',2,'2018-08-15','https://www.facebook.com/ThaneVartaNews/','https://twitter.com/akshatapawar129','1534761393_16 AUGSCORE BOARD.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','1,2',0),(2,'nitin bherale','web designer','nitinbherale@gmail.com','8652598488','8652598488','Thane','Thane','Gokhale Road','Thane','402365',1,'2018-01-10','','',NULL,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','',0);
+insert  into `tbl_member`(`mem_id`,`mem_f_nm`,`mem_desn`,`mem_email`,`mem_m_no`,`mem_wp_no`,`mem_dis`,`mem_tah`,`mem_str`,`mem_cty`,`mem_ps_cd`,`mem_gen`,`mem_dob`,`mem_fb_lk`,`mem_tw_lk`,`mem_img`,`mem_srt_info`,`mem_grp`,`mem_active`) values (1,'Akshata Pawar','web developer','akshatapawar129@gmail.com','8652598488','8652598487','mumbai suburban','kurla','sangharsh nagar','mumbai','402563',2,'2018-08-15','https://www.facebook.com/ThaneVartaNews/','https://twitter.com/akshatapawar129','1534761393_16 AUGSCORE BOARD.jpg','Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','1,2',0),(2,'nitin bherale','web designer','nitinbherale@gmail.com','8652598488','8652598488','Thane','Thane','Gokhale Road','Thane','402365',1,'2018-01-10','','',NULL,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.','',0),(3,'erere','ererer','fgfg@fgfg.hg','9922854416','9922854416','asas','asas','asas','asas','122323',1,'2018-08-16','https://www.google.co.in/','https://www.google.co.in/',NULL,'s','',0);
 
 /*Table structure for table `tbl_sms` */
 

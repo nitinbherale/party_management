@@ -16,16 +16,13 @@
             $up_res = mysqli_query($dblink,$up_qry);
             if ($up_res) 
             {
-
                 echo '<script>success_msg("Success","Event Approved Successfully","event_list.php");</script>';
-
             }
             else
             {
                 $msg = mysqli_error($dblink);
                 echo "<script>swal('Error in approve')</script>";
-            }
-            
+            }  
         }
        //echo "<script>window.alert('".count($events)."')</script>"; 
     }

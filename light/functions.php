@@ -62,6 +62,21 @@ function security($type)
     }
 }
 
+ function execute_qry($qry){
+     global $dblink;
+     $queryFinal=$qry;
+     //echo "<script>window.alert('executed')</script>";
+     $result = mysqli_query($dblink,$queryFinal);
+     if ($result) {
+        echo "<script>window.alert('success')</script>";
+     }
+     else
+     {
+        $msg ="Error".mysqli_error($dblink);
+        echo "<script>window.alert('".$msg."')</script>";
+     }
+ }
+
 function exc_qry($qry)
 {
     global $dblink;
@@ -79,28 +94,6 @@ function exc_qry($qry)
 // echo count($resultArray);
     return array($resultArray);
 } 
-
-function make_bitly_url($url, $login, $appkey, $format='xml', $history=1, $version='2.0.1')
-{
-    //create the URL
-    $bitly = 'http://api.bit.ly/shorten';
-    $param = 'version='.$version.'&longUrl='.urlencode($url).'&login='
-        .$login.'&apiKey='.$appkey.'&format='.$format.'&history='.$history;
-    //get the url
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $bitly . "?" . $param);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    //parse depending on desired format
-    if(strtolower($format) == 'json') {
-        $json = @json_decode($response,true);
-        return $json['results'][$url]['shortUrl'];
-    } else {
-        $xml = simplexml_load_string($response);
-        return 'http://bit.ly/'.$xml->results->nodeKeyVal->hash;
-    }
-}
 
 function send_sms($msg,$mobile_no){
     $authKey = "xk9139XKsu83ae";
